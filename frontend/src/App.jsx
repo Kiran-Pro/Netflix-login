@@ -32,7 +32,11 @@ function App() {
         <div className="w-full max-w-md md:bg-black md:bg-opacity-70 md:m-6 md:px-6 md:py-12 rounded md:rounded-md text-white">
           <div className="flex flex-col gap-5">
             <h1 className="font-netflix font-bold text-3xl">Sign In</h1>
-            {errorBox && <p>{errorBox}</p>}
+            {errorBox && (
+              <p className="bg-[#D89D31] font-netflix text-[15px] font-medium text-black p-4 rounded-md">
+                {errorBox}
+              </p>
+            )}
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-4 items-center justify-center"
