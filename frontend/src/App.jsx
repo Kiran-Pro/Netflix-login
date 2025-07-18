@@ -1,54 +1,16 @@
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import useLogin from "./hook/useLogin";
+
 function App() {
-  const navigate = useNavigate();
-
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passError, setPassError] = useState("");
-  const [errorBox, setErrorBox] = useState("");
-
-  const handleUser = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePass = (e) => {
-    setPass(e.target.value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("User:", email);
-    console.log("Pass:", pass);
-
-    if (!email.trim()) {
-      setEmailError("Please enter a valid email");
-    }
-
-    if (!pass.trim()) {
-      setPassError("Password is required");
-    } else if (pass.length < 4 || pass.length > 60) {
-      setPassError("Your password must contain between 4 and 60 characters.");
-    }
-
-    try {
-      const response = await axios.get(
-        `http://localhost:3000/login?email=${email}&password=${pass}`
-      );
-      console.log("Login response: ", response);
-      if (response.data) {
-        navigate("/dashboard");
-      } else {
-        setErrorBox(
-          "Sorry, we can't find an account with this email address. Please try again or create a new account."
-        );
-      }
-    } catch (error) {
-      console.log("Login failed: ", error.message);
-    }
-  };
-
+  const {
+    email,
+    pass,
+    emailError,
+    passError,
+    errorBox,
+    handleUser,
+    handlePass,
+    handleSubmit,
+  } = useLogin();
   return (
     <>
       <h1 className="font-netflix font-semibold">Sign In</h1>
@@ -58,6 +20,7 @@ function App() {
           <input
             type="email"
             name="email"
+            value={email}
             onChange={handleUser}
             className="border border-red-600"
           />
@@ -68,6 +31,7 @@ function App() {
           <input
             type="password"
             name="password"
+            value={pass}
             onChange={handlePass}
             className="border border-red-600"
           />
