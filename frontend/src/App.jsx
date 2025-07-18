@@ -36,8 +36,18 @@ function App() {
     <>
       <h1>Netflix Login</h1>
       <form onSubmit={handleSubmit}>
-        <input type="email" name="email" onChange={handleUser} />
-        <input type="password" name="password" onChange={handlePass} />
+        <input
+          type="email"
+          name="email"
+          onChange={handleUser}
+          className="border border-red-600"
+        />
+        <input
+          type="password"
+          name="password"
+          onChange={handlePass}
+          className="border border-red-600"
+        />
         <input type="submit" value="submit" />
       </form>
     </>
