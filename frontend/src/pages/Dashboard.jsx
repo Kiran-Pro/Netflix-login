@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const Dashboard = () => {
   const profiles = [
     { img: "./profile_1.png", name: "User1" },
@@ -6,6 +8,21 @@ const Dashboard = () => {
     { img: "./kids.png", name: "Kids" },
   ];
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
+        <div className="w-10 h-10 border-4 border-red-600 border-t-black rounded-full animate-spin"></div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4">
       <h1 className="text-3xl font-semibold mb-10 font-netflix text-center">
