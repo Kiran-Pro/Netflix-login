@@ -47,9 +47,10 @@ const useLogin = () => {
     }
 
     try {
-      const response = await axios.get(
-        `http://localhost:3000/login?email=${email}&password=${pass}`
-      );
+      const response = await axios.post(`http://localhost:3000/login`, {
+        email: email,
+        password: pass,
+      });
       console.log("Login response: ", response);
       if (response.data) {
         navigate("/dashboard");
