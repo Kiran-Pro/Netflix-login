@@ -15,3 +15,8 @@ A modern, responsive Netflix-style login interface built with **React**, **Tailw
 - Node.js
 - Express.js
 - CORS & JSON Middleware
+
+### Testing Credentials
+
+- email: user@gmail.com
+- password: Qwerty@1234
