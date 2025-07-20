@@ -1,4 +1,4 @@
-# 🎬 Netflix Clone - Login Page with Dashboard
+# 🎬 Netflix - Login Page with Dashboard
 
 A modern, responsive Netflix-style login interface built with **React**, **Tailwind CSS**, and a simple **Express.js** backend for authentication.
 
