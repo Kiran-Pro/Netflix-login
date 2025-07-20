@@ -51,17 +51,21 @@ const useLogin = () => {
         email: email,
         password: pass,
       });
-      console.log("Login response: ", response);
-      if (response.data) {
+      console.log("Status:", response.status);
+      console.log("Data:", response.data);
+      if (response.status === 200 && response.data) {
         navigate("/dashboard");
-      } else {
-        setErrorBox(
-          "Sorry, we can't find an account with this email address. Please try again or create a new account."
-        );
       }
     } catch (error) {
-      console.log("Login failed: ", error.message);
-      setErrorBox("Something went wrong. Please try again later.");
+      console.log("Login failed:", error.message);
+
+      if (error.response && error.response.status === 401) {
+        setErrorBox(
+          "Sorry, we can't find an account with this email address or password. Please try again or create a new account."
+        );
+      } else {
+        setErrorBox("Something went wrong. Please try again later.");
+      }
     }
   };
 

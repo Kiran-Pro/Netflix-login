@@ -81,7 +81,7 @@ function App() {
               <input
                 type="submit"
                 value="Sign In"
-                className="bg-[#E50914] py-2 w-full rounded-md font-netflix font-semibold cursor-pointer"
+                className="bg-[#E50914] text-white py-2 px-4 w-full rounded-md font-netflix font-semibold cursor-pointer hover:bg-[#B0060F] transition-colors duration-200"
               />
               <p className="text-gray-400 font-netflix">OR</p>
               <button

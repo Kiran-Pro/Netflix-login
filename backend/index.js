@@ -6,11 +6,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const Email = "user@gmail.com";
-const passWord = "Qwerty@1234";
+const users = [
+  {
+    email: "user@gmail.com",
+    password: "Qwerty@1234",
+  },
+];
 
 app.listen(3000, () => {
-  console.log("port 3000 started...");
+  console.log("Server Started in port 3000");
 });
 
 app.get("/", (req, res) => {
@@ -19,10 +23,16 @@ app.get("/", (req, res) => {
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
-  if (Email === email && passWord === password) {
-    res.send(true);
+
+  const user = users.find(
+    (user) => user.email === email && user.password === password
+  );
+
+  if (user) {
+    res.status(200).send(true);
   } else {
-    res.send(false);
+    res.status(401).send(false);
   }
-  console.log(req.body);
+
+  console.log("Login: ", req.body);
 });
